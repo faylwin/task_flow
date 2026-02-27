@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>TaskFlow Pro</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <header class="topbar">
+    <span class="brand-name">TaskFlow</span>
+    <div class="stats">
+      <span>Total: <b id="statTotal">0</b></span> |
+      <span>Completas: <b id="statCompletadas">0</b></span>
+    </div>
+    <div id="reloj">00:00:00</div>
+  </header>
+
+  <main class="layout">
+    <aside class="panel-form">
+      <form id="formTarea">
+        <div class="campo">
+          <label class="campo-label">Actividad</label>
+          <textarea id="inputDescripcion" class="campo-input" required placeholder="Escriba aquí..."></textarea>
+        </div>
+        <div class="campo">
+          <label class="campo-label">Prioridad</label>
+          <select id="selectPrioridad" class="campo-input">
+            <option value="baja">Baja</option>
+            <option value="media" selected>Media</option>
+            <option value="alta">Alta</option>
+          </select>
+        </div>
+        <div class="campo">
+          <label class="campo-label">Límite</label>
+          <input type="date" id="inputFecha" class="campo-input">
+        </div>
+        <button type="submit" class="btn-agregar" id="btnAgregar">
+          <span id="btnTexto">＋ Agregar Tarea</span>
+        </button>
+      </form>
+      <div style="margin-top:20px; display:flex; flex-direction:column; gap:10px">
+        <button class="btn-api" onclick="gestor.cargarDesdeAPI()">Sincronizar API</button>
+        <button class="btn-api-outline" onclick="gestor.saveLocal()">Respaldar Storage</button>
+      </div>
+    </aside>
+
+    <section class="panel-lista">
+      <div id="notificacion" class="notificacion hidden"></div>
+      <ul id="listaTareas" class="lista-tareas"></ul>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
